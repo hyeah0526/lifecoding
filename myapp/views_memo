@@ -1,0 +1,38 @@
+[ 생활코딩 ]
+
+1. 터미널에서 장고 설치
+pip3 install django
+
+2. myproject 프로젝트 생성
+django-admin startproject myproject .
+
+3. 실행시키기
+python manage.py
+
+4. 실행시키기 2 (기본서버가 실행된 8000포트)
+python manage.py runserver
+다른포트 사용하고 싶을때 -> python manage.py runserver 8888
+서버 끌때는 터미널에서 ctrl+c
+
+5.  app만들기
+django-admin startapp myapp
+project안의 app안에서 만듬
+app안에는 view를 만듬
+
+사용자가 접속 -> urls.py를 수정해서 코딩 -> 적당한 app으로 위임 -> app urls.py를 통해서 view로 위임 -> model를 통해서 DB 사용
+
+6. Routing (경로) 
+urls.py가 가장 큰 틀의 라우팅을 하고 적당한 app으로 위임을 하고 app이 view def로 위임
+myproject의 urls.py로 가서 추가할 경로를 설정할건데
+myproject의 urls.py에서 include를 import 추가해주고,
+urlpatterns에 추가해주기 예시 ->  path('', include('myapp.urls'))  myapp안의 urls를 사용하라는 뜻
+그리고 urls.py 파일을 복사해서 myapp에 붙여넣기해주기
+불필요한 내용은 다 지워주고 경로 설정해주기
+
+7. 사용자가 경로로 들어왔을때 views로 전달해주려면?
+views.py파일을 열어서 전송 역할을 해줄 함수를 정의
+HttpResponse를 이용해서 응답을 하겠다는 의미로 HttpResponse를 import해줘야함
+
+8. 다시 urls.py로 가서 해당 함수를 사용하기 위해 views를 import해주고 path안에 추가
+
+9. 이런식으로 다른 경로들도 설정가능
